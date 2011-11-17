@@ -76,14 +76,14 @@ class Context():
 		return output
 		
 	def get_location(self, concept):
-		return self.chaining(concept, \
+		return self.chaining(concept.replace(' ', '_'), \
 				final_arg1=['AtLocation', 'LocatedNear'], \
 				inter_arg1=['IsA', 'UsedFor', 'CapableOf', 'ReceivesAction', \
 							'DefinedAs'], \
 				inter_arg2=['HasProperty'])
 
 	def get_action(self, concept):
-		return self.chaining(concept, \
+		return self.chaining(concept.replace(' ', '_'), \
 				final_arg1=['UsedFor', 'CapableOf', 'HasSubevent', \
 							'HasFirstSubevent', 'HasLastSubevent', \
 							'HasPrerequisite', 'Causes', \
@@ -92,13 +92,13 @@ class Context():
 				inter_arg2=['HasProperty'])
 
 	def get_property(self, concept):
-		return self.chaining(concept, \
+		return self.chaining(concept.replace(' ', '_'), \
 				final_arg1=['HasProperty'], \
 				inter_arg1=['IsA', 'UsedFor', 'CapableOf' \
 							'ReceivesAction', 'DefinedAs'])
 
 	def get_object(self, concept):
-		return self.chaining(concept, \
+		return self.chaining(concept.replace(' ', '_'), \
 				final_arg1=['IsA', 'HasA', 'MadeOf', 'SymbolOf'], \
 				final_arg2=['PartOf', 'UsedFor', 'AtLocation', \
 							'CreatedBy', 'ReceivesAction', \
@@ -107,7 +107,7 @@ class Context():
 							'CauseDesire', 'DefinedAs'])
 
 	def get_actor(self, concept):
-		return self.chaining(concept, \
+		return self.chaining(concept.replace(' ', '_'), \
 				final_arg2=['CapableOf', 'Desires'], \
 				inter_arg1=['IsA', 'HasA', 'UsedFor', 'CreatedBy', \
 							'MotivatedByGoal', 'Causes', \
@@ -134,7 +134,7 @@ class Context():
 
 if __name__ == '__main__':
 	context = Context()
-	concept = 'unhealthy'
+	concept = 'fast food'
 	print context.get_location(concept)
 	print context.get_action(concept)
 	print context.get_property(concept)
