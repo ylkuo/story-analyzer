@@ -1,0 +1,4 @@
+fast food|vegetable,fruit,food
+job|
+disease,medicine|
+religion|
